@@ -1,0 +1,32 @@
+<body>
+<p>task-edit works!</p>
+
+
+<ol>
+@for (t of (tasks$ | async); track t.id) {
+  <button (click)="Update(t)">Update Task</button>
+
+
+  <li> {{t.details}} - {{t.title}}-{{t.color}}</li>
+
+}
+</ol>
+<div class = form>
+<form [formGroup]="taskForm"(ngSubmit)="onSubmit()">
+<label>Title</label>
+<input formControlName="title">
+<label>Id</label>
+<input formControlName="id">
+<label>Details</label>
+<textarea id="details" rows="3" formControlName="details"></textarea>
+<label>color</label>
+<input formControlName="color">
+
+</form>
+<div class = "button">
+<button  type="button" (click)="onUpdate()">Submit Update Task</button>
+
+</div>
+</div>
+
+</body>

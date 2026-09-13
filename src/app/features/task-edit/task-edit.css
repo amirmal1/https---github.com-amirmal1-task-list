@@ -1,0 +1,22 @@
+.form{
+  width: 300px;
+  padding: 60px;
+  height: auto;
+  box-sizing: border-box;
+  position: relative;
+  background-color: aquamarine;
+  border-radius: 20px;
+  margin: 0 auto;
+
+
+}
+
+.button{
+  padding-left: 20px;
+  width: 200px;
+}
+
+body {
+  background-color:darkcyan;
+  margin:0;
+}

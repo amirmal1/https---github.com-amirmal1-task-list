@@ -1,0 +1,11 @@
+.view-task{
+  width: 300px;
+  box-sizing: border-box;
+  padding-left: 50%;
+  padding-top: 10px;
+  border: 10px;
+  border-radius: 20px;
+  margin: o auto;
+  border-style: dashed;
+
+}

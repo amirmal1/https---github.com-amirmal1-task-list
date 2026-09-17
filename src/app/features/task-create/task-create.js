@@ -1,5 +1,5 @@
 import { inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 import { FormBuilder, FormControl, ReactiveFormsModule, Validators, FormGroup } from '@angular/forms';
 import { TaskService } from '../../services/task';
@@ -9,7 +9,7 @@ import { AsyncPipe } from '@angular/common';
 
 
 @Component({
-  imports: [AsyncPipe, ReactiveFormsModule],
+  imports: [AsyncPipe, ReactiveFormsModule, RouterLink],
   selector: 'app-task-create',
   styleUrl: './task-create.css',
   templateUrl: './task-create.html',
@@ -35,10 +35,20 @@ add() {
   this.taskService.addTask
 }
 onSubmit() {
+
+  if(!confirm('Add this task?')){
+    return;
+
+  }
   this.taskService.addTask(this.taskForm.value );
+
 }
 
+onReset() {
+   this.taskForm.reset();
+}
 onUpdate() {
+
   const {id, ...patch } = this.taskForm.value;
   this.taskService.updateTask(id, patch );
 }
@@ -48,10 +58,13 @@ Update(tasks) {
     id: tasks.id,
     title: tasks.title,
     details: tasks.details,
-    color: tasks.color
+    color: tasks.color,
+    createdAt: tasks.createdAt
 
     })
 
   }
 
 }
+
+

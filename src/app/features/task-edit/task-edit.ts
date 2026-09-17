@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, computed, effect } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { NewTask } from '../../models/task.model';
@@ -22,6 +22,16 @@ export class TaskEdit {
 private fb = inject(FormBuilder);
   taskService = inject(TaskService);
   private router = inject(Router);
+  private route = inject(ActivatedRoute);
+
+  private params = toSignal(this.route.paramMap);
+  taskId = computed(() => this.params()?.get('id') ?? '');
+
+  constructor() {
+    effect(() => console.log('EDITING id:', this.taskId()));   // <-- the TEST
+  }
+
+
 
   editingId: string = '';
   name = new FormControl('');
@@ -66,8 +76,7 @@ Update(tasks: NewTask) {
     color: tasks.color
 
     })
-}
-
+  }
 }
 
 

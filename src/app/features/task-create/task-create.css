@@ -1,0 +1,31 @@
+.form{
+  width: 300px;
+  padding: 60px;
+  height: auto;
+  box-sizing: border-box;
+  position: relative;
+  background-color: aquamarine;
+  border-radius: 20px;
+  margin: 0 auto;
+}
+.task-card {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  background: #fff;
+  border: 1px solid #0f0570;
+  border-radius: 10px;
+  border-left: 6 px solid #999;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  padding: 14px 18px;
+  margin-bottom: 12px;
+  transition: box-shadow 0.15s easy, transform 0.15s easy;;
+  list-style: none;
+}
+.task-cards {
+  border: #999;
+  border-radius: 10px;
+  border-color: black;
+}
+
+

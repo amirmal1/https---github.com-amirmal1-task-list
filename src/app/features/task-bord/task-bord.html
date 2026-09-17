@@ -1,16 +1,16 @@
-<p>task-bord works!</p>
-<p>there are {{taskService.gettasksSignal()}}</p>
 
 <ol>
 @for (t of (tasks$ | async); track t.id) {
+<li class="task-card">
   <button (click)="deleteTask(t.id)">Delete Task</button>
   <button (click)="onClick(t)">View Task</button>
-  <a class="edit-link" [routerLink]="['/tasks',t.id , 'edit']">Edit</a>
-  <li [style.Color]="t.color"> {{t.details}} - {{t.title}}-{{t.color}}</li>
-  <a class="view-link" [routerLink]="['/tasks', t.id, 'view']">Edit</a>
+
+
+  <div [style.Color]="t.color">{{t.title}} - {{t.details}}  -{{t.color}} - {{t.createdAt | date:'short'}}</div></li>
+
 }
 </ol>
-
+<div class = "task-detail">
 @if(currentTask === null) {
   <p>select a task</p>
 
@@ -22,6 +22,6 @@
   <p>{{currentTask.details}}</p>
 
 }
-
+</div>
 
 <div><p>{{tasks$.details}}</p></div>

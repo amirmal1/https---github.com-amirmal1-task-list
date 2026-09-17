@@ -1,4 +1,5 @@
-import { Component, inject } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { Component, inject, computed, effect} from '@angular/core';
 import { TaskService } from '../../services/task';
 import { AsyncPipe } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
@@ -18,11 +19,19 @@ export class TaskView {
  private route = inject(ActivatedRoute);
   id = this.route.snapshot.paramMap.get('id')!;
 
-task$ = this.taskService.getTask$(this.id);
+  private params = toSignal(this.route.paramMap);
+  taskId = computed(() => this.params()?.get('id') ?? '');
+
+  constructor() {
+    effect(() => console.log('EDITING id:', this.taskId()));   // <-- the TEST
 
 
 
+
+  }
 }
+
+
 
 
 

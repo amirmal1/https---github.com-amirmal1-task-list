@@ -9,12 +9,14 @@ import {
     collectionData,
     doc,
     updateDoc,
-    deleteDoc
+    deleteDoc,
+    docData
 } from '@angular/fire/firestore';
 import {toSignal} from '@angular/core/rxjs-interop';
 
 
 import { Firestore } from '@angular/fire/firestore';
+
 
 
 
@@ -37,7 +39,7 @@ __init3() {this.gettasksSignal = toSignal(this.gettasks$(), {initialValue: [] })
 //Create
 addTask(NewTask) {
 
-  return addDoc(this.tasksCol, NewTask);
+  return addDoc(this.tasksCol, {...NewTask, createdAt: Date.now()});
 }
 
 //Delete
@@ -49,4 +51,8 @@ deleteTask(id) {
 updateTask(id, patch) {
   return updateDoc(doc(this.firestore, 'tasks', id), patch);
 }
+getTask$(id) {
+  return docData(doc(this.firestore, 'tasks', id), { idField: 'id' }) ;
+}
+
 }

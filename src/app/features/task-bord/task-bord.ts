@@ -1,6 +1,6 @@
 import { Component, inject, computed } from '@angular/core';
 import { TaskService } from '../../services/task';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, DatePipe } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NewTask } from '../../models/task.model';
 import { toSignal } from '@angular/core/rxjs-interop';
@@ -14,9 +14,10 @@ import { TaskView } from '../task-view/task-view';
 
 
 
+
 @Component({
   standalone: true,
-  imports: [AsyncPipe, ReactiveFormsModule, RouterLink,],
+  imports: [AsyncPipe, ReactiveFormsModule, RouterLink, DatePipe,],
   selector: 'app-task-bord',
   styleUrl: './task-bord.css',
   templateUrl: './task-bord.html',

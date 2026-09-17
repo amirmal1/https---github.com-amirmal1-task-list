@@ -19,6 +19,7 @@ import { Firestore } from '@angular/fire/firestore';
 
 
 
+
 @Service()
 export class TaskService {
   private firestore = inject(Firestore);
@@ -36,9 +37,9 @@ gettasksSignal = toSignal(this.gettasks$(), {initialValue: [] as NewTask[]});
 
 
 //Create
-addTask(NewTask: Omit<NewTask, 'id'>) {
+addTask(NewTask: Omit<NewTask, 'id' | 'createdAt'>) {
 
-  return addDoc(this.tasksCol, NewTask);
+  return addDoc(this.tasksCol, {...NewTask, createdAt: Date.now()});
 }
 
 //Delete

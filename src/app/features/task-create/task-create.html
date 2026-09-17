@@ -1,18 +1,18 @@
-<p>task-create works!</p>
+
 
 <ol>
 @for (t of (tasks$ | async); track t.id) {
 
 
 
-  <li> {{t.details}} - {{t.title}}-{{t.color}}</li>
+  <li [style.Color]="t.color">  {{t.title}} - {{t.details}} - {{t.color}} </li>
 
 }
 </ol>
 
 
 
-<form [formGroup]="taskForm"(ngSubmit)="onSubmit()">
+<form class = "form" [formGroup]="taskForm"(ngSubmit)="onSubmit()">
 <label>Title</label>
 <input formControlName="title">
 <label>Id</label>

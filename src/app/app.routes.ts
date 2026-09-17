@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import { Routes, RouterLink } from '@angular/router';
 import { TaskBord } from './features/task-bord/task-bord';
 import { TaskCreate } from './features/task-create/task-create';
 import { TaskEdit } from './features/task-edit/task-edit';
@@ -10,6 +10,6 @@ export const routes: Routes = [
   { path: 'tasks/new', component: TaskCreate},
   { path: 'tasks/:id/edit', component:TaskEdit},
   {path: '**', redirectTo: 'tasks'},
-  {path:'tasks/:id',component:TaskView}
+  {path:'tasks/:id/view',component:TaskView}
 
 ];

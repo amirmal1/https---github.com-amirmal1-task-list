@@ -3,6 +3,6 @@ export interface NewTask {
   title: string;
   details: string;
   color: string;
-
+  createdAt: number;
 
 }

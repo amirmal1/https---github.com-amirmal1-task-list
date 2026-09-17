@@ -1,14 +1,23 @@
 import { inject, computed } from '@angular/core';
 import { TaskService } from '../../services/task';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, DatePipe } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+
+
+
+import { RouterLink } from '@angular/router';
+
+
+
+
+
 
 
 
 
 @Component({
   standalone: true,
-  imports: [AsyncPipe, ReactiveFormsModule],
+  imports: [AsyncPipe, ReactiveFormsModule, RouterLink, DatePipe,],
   selector: 'app-task-bord',
   styleUrl: './task-bord.css',
   templateUrl: './task-bord.html',
@@ -21,6 +30,9 @@ export class TaskBord {constructor() { TaskBord.prototype.__init.call(this);Task
     this.taskService.gettasks$();
   }
   deleteTask(id) {
+    if (!confirm('Delete this task')) {
+      return;
+    }
     this.taskService.deleteTask(id);
   }
   __init3() {this.totalCount = computed(() => this.tasks$().length)}
@@ -31,6 +43,7 @@ export class TaskBord {constructor() { TaskBord.prototype.__init.call(this);Task
     this.currentTask = tasks;
   }
 
-  
+
+
 }
 
